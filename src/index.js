@@ -4,10 +4,15 @@ import SearchBar from './components/SearchBar';
 
 class App extends React.Component
 {
+    handleTermChange(term)
+    {
+        console.log(term);
+    }
+
     render()
     {
         return (
-            <SearchBar />
+            <SearchBar onTermChange={this.handleTermChange} />
         );
     }
 }
