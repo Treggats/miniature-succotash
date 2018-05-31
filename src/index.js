@@ -11,22 +11,26 @@ class App extends React.Component
         super();
         this.state = {
             gifs: []
-        }
+        };
+
+        this.handleTermChange = this.handleTermChange.bind(this);
     }
 
-    handleTermChange(term)
-    {
+    handleTermChange = (term) => {
         const apiKey = 'dc6zaTOxFJmzC';
         const url = `http://api.giphy.com/v1/gifs/search?q=${term}&api_key=${apiKey}`;
 
         axios.get(url).then(response => {
             console.log(response.data.data[0]);
+            this.setState({
+                gifs: response.data.data
+            });
         }).catch(error => {
             if ('response' in error) {
                 console.log(error.response.data);
             }
         });
-    }
+    };
 
     render()
     {
