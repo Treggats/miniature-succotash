@@ -1,9 +1,9 @@
 import React from 'react';
 
-const GifItem = (obj) => {
+const GifItem = ({gif, onGifSelect}) => {
     return (
-        <div className="gif-item">
-            <img src={obj.gif.images.downsized.url} alt={obj.gif.id} />
+        <div className="gif-item" onClick={ () => onGifSelect(gif)}>
+            <img src={gif.images.downsized.url} alt={gif.id} />
         </div>
     )
 };
