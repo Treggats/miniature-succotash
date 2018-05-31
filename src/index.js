@@ -1,5 +1,6 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
+import Modal from "react-modal";
 import axios from 'axios';
 import SearchBar from './components/SearchBar';
 import GifList from './components/GifList';
@@ -18,6 +19,11 @@ class App extends React.Component
         };
 
         this.handleTermChange = this.handleTermChange.bind(this);
+    }
+
+    componentWillMount()
+    {
+        Modal.setAppElement('body');
     }
 
     openModal = (gif) => {
