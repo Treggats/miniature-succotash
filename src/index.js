@@ -42,7 +42,8 @@ class App extends React.Component
 
     handleTermChange = (term) => {
         const apiKey = 'dc6zaTOxFJmzC';
-        const url = `http://api.giphy.com/v1/gifs/search?q=${term}&api_key=${apiKey}`;
+        const limit = 10;
+        const url = `http://api.giphy.com/v1/gifs/search?q=${term}&api_key=${apiKey}&limit=${limit}`;
 
         axios.get(url).then(response => {
             this.setState({
