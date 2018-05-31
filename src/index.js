@@ -45,7 +45,6 @@ class App extends React.Component
         const url = `http://api.giphy.com/v1/gifs/search?q=${term}&api_key=${apiKey}`;
 
         axios.get(url).then(response => {
-            console.log(response.data.data[0]);
             this.setState({
                 gifs: response.data.data
             });
