@@ -11,11 +11,27 @@ class App extends React.Component
     {
         super();
         this.state = {
-            gifs: []
+            gifs: [],
+            selectedGif: null,
+            modalIsOpen: false
         };
 
         this.handleTermChange = this.handleTermChange.bind(this);
     }
+
+    openModal = (gif) => {
+        this.setState({
+            modalIsOpen: true,
+            selectedGif: gif
+        });
+    };
+
+    closeModel = () => {
+        this.setState({
+            modelIsOpen: false,
+            selectedGif: null
+        });
+    };
 
     handleTermChange = (term) => {
         const apiKey = 'dc6zaTOxFJmzC';
