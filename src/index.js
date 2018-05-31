@@ -1,5 +1,6 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
+import axios from 'axios';
 import SearchBar from './components/SearchBar';
 import GifList from './components/GifList';
 
@@ -9,30 +10,22 @@ class App extends React.Component
     {
         super();
         this.state = {
-            gifs: [
-                {
-                    id: 1,
-                    url: 'https://dummyimage.com/300x300/000/fff'
-                },
-                {
-                    id: 2,
-                    url: 'https://dummyimage.com/300x300/000/fff'
-                },
-                {
-                    id: 3,
-                    url: 'https://dummyimage.com/300x300/000/fff'
-                },
-                {
-                    id: 4,
-                    url: 'https://dummyimage.com/300x300/000/fff'
-                }
-            ]
+            gifs: []
         }
     }
 
     handleTermChange(term)
     {
-        console.log(term);
+        const apiKey = 'dc6zaTOxFJmzC';
+        const url = `http://api.giphy.com/v1/gifs/search?q=${term}&api_key=${apiKey}`;
+
+        axios.get(url).then(response => {
+            console.log(response.data.data[0]);
+        }).catch(error => {
+            if ('response' in error) {
+                console.log(error.response.data);
+            }
+        });
     }
 
     render()
