@@ -8,7 +8,7 @@ const GifList = (props) => {
 
     return (
         <ul>
-            {gifItems}
+            <div className="gif-list">{gifItems}</div>
         </ul>
     )
 };

@@ -3,6 +3,7 @@ import ReactDOM from 'react-dom';
 import axios from 'axios';
 import SearchBar from './components/SearchBar';
 import GifList from './components/GifList';
+import './index.css';
 
 class App extends React.Component
 {

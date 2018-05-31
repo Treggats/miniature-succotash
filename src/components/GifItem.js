@@ -2,9 +2,9 @@ import React from 'react';
 
 const GifItem = (obj) => {
     return (
-        <li>
+        <div className="gif-item">
             <img src={obj.gif.images.downsized.url} alt={obj.gif.id} />
-        </li>
+        </div>
     )
 };
 
