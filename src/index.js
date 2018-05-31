@@ -3,6 +3,7 @@ import ReactDOM from 'react-dom';
 import axios from 'axios';
 import SearchBar from './components/SearchBar';
 import GifList from './components/GifList';
+import GifModal from './components/GifModal';
 import './index.css';
 
 class App extends React.Component
@@ -26,7 +27,7 @@ class App extends React.Component
         });
     };
 
-    closeModel = () => {
+    closeModal = () => {
         this.setState({
             modelIsOpen: false,
             selectedGif: null
@@ -55,6 +56,11 @@ class App extends React.Component
             <div>
                 <SearchBar onTermChange={this.handleTermChange} />
                 <GifList gifs={this.state.gifs} />
+                <GifModal
+                    modalIsOpen={this.state.modalIsOpen}
+                    selectedGif={this.state.selectedGif}
+                    onRequestClose={ () => this.closeModal()}
+                />
             </div>
         );
     }
