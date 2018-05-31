@@ -3,6 +3,18 @@
   width: 90%;
 }
 
+.gif-modal {
+  left: 50%;
+  position: absolute;
+  text-align: center;
+  top: 50%;
+  -webkit-transform: translateX(-50%) translateY(-50%);
+  -moz-transform: translateX(-50%) translateY(-50%);
+  -ms-transform: translateX(-50%) translateY(-50%);
+  -o-transform: translateX(-50%) translateY(-50%);
+  transform: translateX(-50%) translateY(-50%);
+}
+
 .gif-item {
   -webkit-box-shadow: 2px 2px 4px 0px #cccccc;
   -moz-box-shadow: 2px 2px 4px 0px #cccccc;
