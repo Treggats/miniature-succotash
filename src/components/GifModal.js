@@ -2,6 +2,10 @@ import React from 'react';
 import Modal from 'react-modal';
 
 const GifModal = (props) => {
+    if (props.selectedGif == null) {
+        return <div></div>;
+    }
+
     return (
         <Modal isOpen={props.modalIsOpen} onRequestClose={ () => props.onRequestClose()}>
             <div>
