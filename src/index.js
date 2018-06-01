@@ -5,7 +5,7 @@ import axios from 'axios';
 import SearchBar from './components/SearchBar';
 import GifList from './components/GifList';
 import GifModal from './components/GifModal';
-import './index.css';
+import './styles/app.css';
 
 class App extends React.Component
 {
