@@ -3,6 +3,7 @@ import Modal from "react-modal";
 import {connect} from 'react-redux';
 import {bindActionCreators} from 'redux';
 import SearchBar from '../components/SearchBar';
+import GifList from '../components/GifList';
 import * as Actions from '../actions';
 import '../styles/app.css';
 
@@ -18,6 +19,7 @@ class App extends React.Component
         return (
             <div>
                 <SearchBar onTermChange={this.props.actions.requestGifs} />
+                <GifList gifs={this.props.gifs} />
             </div>
         );
     }
@@ -25,7 +27,7 @@ class App extends React.Component
 
 function mapStateToProps(state) {
     return {
-        gifs: state.gifs
+        gifs: state.gifs.data
     }
 }
 
