@@ -1,7 +1,7 @@
 import {OPEN_MODAL, CLOSE_MODAL} from '../actions';
 
 const initialState = {
-    selectedGif = null,
+    selectedGif: null,
     modalIsOpen: false
 };
 
