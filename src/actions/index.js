@@ -11,6 +11,6 @@ export function requestGifs(term = null) {
 
     return {
         type: REQUEST_GIFS,
-        payload: data.data
+        payload: data
     }
 }
