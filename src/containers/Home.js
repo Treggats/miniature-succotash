@@ -8,7 +8,7 @@ import GifModal from '../components/GifModal';
 import * as Actions from '../actions';
 import '../styles/app.css';
 
-class App extends React.Component
+class Home extends React.Component
 {
     componentWillMount()
     {
@@ -44,5 +44,5 @@ function mapDispatchToProps(dispatch) {
         actions: bindActionCreators(Actions, dispatch)
     };
 }
-    
-export default connect(mapStateToProps, mapDispatchToProps)(App);
+
+export default connect(mapStateToProps, mapDispatchToProps)(Home);
