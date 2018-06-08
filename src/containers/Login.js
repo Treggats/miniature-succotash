@@ -1,11 +1,38 @@
 import React from 'react';
 import {Field, reduxForm} from 'redux-form';
 
+const validate = values => {
+    const errors = {};
+
+    if (!values.email) {
+        errors.email = "Please enter an email.";
+    }
+    else if (!/^[A-Z0-9._%+-]+@[A-Z0-9.-]+\.[A-Z]{2,4}$/i.test(values.email)) {
+        errors.email = 'Invalid email address';
+    }
+
+    if (!values.password) {
+        errors.password = "Please enter a password.";
+    }
+
+    return errors;
+};
+
 class Login extends React.Component
 {
     handleFormSubmit = (values) => {
         console.log(values);
     };
+
+    renderField = ({input, label, type, meta: {touched, error} }) => (
+        <fieldset className={`form-group ${touched && error ? 'has-error': ''}`}>
+            <label className="control-label">{label}</label>
+            <div>
+                <input {...input} placeholder={label} className="form-control" type={type} />
+                {touched && error && <div className="help-block">{error}</div>}
+            </div>
+        </fieldset>
+    );
 
     render()
     {
@@ -16,12 +43,12 @@ class Login extends React.Component
                     <form onSubmit={this.props.handleSubmit(this.handleFormSubmit)}>
                         <fieldset className="form-group">
                             <label htmlFor="email">E-mail</label>
-                            <Field name="email" component="input" className="form-control" type="text" placeholder="email" />
+                            <Field name="email" component={this.renderField} className="form-control" type="text" placeholder="email" />
                         </fieldset>
 
                         <fieldset className="form-group">
                             <label htmlFor="password">Password</label>
-                            <Field name="password" component="input" className="form-control" type="text" placeholder="password" />
+                            <Field name="password" component={this.renderField} className="form-control" type="text" placeholder="password" />
                         </fieldset>
 
                         <button action="submit" className="btn btn-primary">Sign In</button>
@@ -33,5 +60,6 @@ class Login extends React.Component
 }
 
 export default reduxForm({
-    form: 'login'
+    form: 'login',
+    validate
 })(Login);
