@@ -26,10 +26,40 @@ const validate = values => {
 
 class Signup extends React.Component
 {
+    handleFormSubmit = (values) => {
+        console.log(values);
+    };
+
+    renderField = ({input, label, type, meta: {touched, error} }) => (
+        <fieldset className={`form-group ${touched && error ? 'has-error': ''}`}>
+            <label className="control-label">{label}</label>
+            <div>
+                <input {...input} placeholder={label} className="form-control" type={type} />
+                {touched && error && <div className="help-block">{error}</div>}
+            </div>
+        </fieldset>
+    );
+
     render()
     {
-        return <div>Signup</div>;
+        return (
+            <div className="container">
+                <div className="col-md-6 col-md-offset-3">
+                    <h2 className="text-center">Sign up</h2>
+                    <form onSubmit={this.props.handleSubmit(this.handleFormSubmit)}>
+                        <Field name="email" type="text" component={this.renderField} label="Email" />
+                        <Field name="password" type="password" component={this.renderField} label="Password" />
+                        <Field name="passwordConfirmation" type="password" component={this.renderField} label="Password confirmation" />
+
+                        <button action="submit" className="btn btn-primary">Sign up</button>
+                    </form>
+                </div>
+            </div>
+        );
     }
 }
 
-export default Signup;
+export default reduxForm({
+    form: 'signup',
+    validate
+})(Signup);
