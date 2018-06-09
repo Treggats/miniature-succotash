@@ -5,7 +5,6 @@ import * as Actions from '../actions';
 
 class Header extends React.Component
 {
-<<<<<<< HEAD
     handleSignout = () => {
         this.props.signOutUser();
     }
